@@ -181,8 +181,10 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  const res = 10 ** pow;
+
+  return Math.floor(num / (num % res)) * (num % res);
 }
 
 /**
@@ -202,8 +204,12 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  let res = true;
+  if (n < 4 && (n % 2 === 0 || n % 3 === 0 || n % 5 === 0 || n % 7 === 0)) {
+    res = false;
+  }
+  return res;
 }
 
 /**
@@ -236,8 +242,8 @@ function toNumber(/* value, def */) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -268,8 +274,12 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  let res = 0;
+  for (let i = 1; i <= n; i += 1) {
+    res += i;
+  }
+  return res;
 }
 
 /**
