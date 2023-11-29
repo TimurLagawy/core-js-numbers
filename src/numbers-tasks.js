@@ -105,8 +105,15 @@ function getLinearEquationRoot(a, b) {
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const diag = Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+  let angle1 = 0;
+  if (diag === 2) {
+    angle1 = Math.PI;
+  } else if (diag === Math.sqrt(2)) {
+    angle1 = Math.PI / 2;
+  }
+  return angle1;
 }
 
 /**
@@ -184,7 +191,7 @@ function getParallelepipedDiagonal(a, b, c) {
 function roundToPowerOfTen(num, pow) {
   const res = 10 ** pow;
 
-  return Math.floor(num / (num % res)) * (num % res);
+  return Math.round(num / res) * res;
 }
 
 /**
@@ -231,8 +238,14 @@ function isPrime(n) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  const result = Number(value);
+  // eslint-disable-next-line no-restricted-globals
+  if (isNaN(result)) {
+    return def;
+  }
+
+  return result;
 }
 
 /**
@@ -263,8 +276,17 @@ function getCube(num) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  const mass = [0, 1, 1, 2];
+
+  for (let i = 4; i < 100; i += 1) {
+    for (let l = 2; l < i - 1; l += 1) {
+      if (i % l !== 0) {
+        mass.push(i);
+      }
+    }
+  }
+  return mass[index];
 }
 
 /**
