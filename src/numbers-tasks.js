@@ -293,8 +293,13 @@ function getSumToN(n) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  let res = 0;
+  const str = num.toString();
+  for (let i = 0; i < str.length; i += 1) {
+    res += +str[i];
+  }
+  return res;
 }
 
 /**
@@ -308,8 +313,8 @@ function getSumOfDigits(/* num */) {
  *   16  => true
  *   15  => false
  */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function isPowerOfTwo(num) {
+  return num % 2 === 0;
 }
 
 /**
@@ -415,8 +420,12 @@ function getNumberValue(/* number */) {
  * 5        => true
  * '5'      => false
  */
-function isNumber(/* number */) {
-  throw new Error('Not implemented');
+function isNumber(number) {
+  let res = false;
+  if (typeof number === 'number' && number !== Infinity) {
+    res = true;
+  }
+  return res;
 }
 
 /**
@@ -430,8 +439,12 @@ function isNumber(/* number */) {
  * 5.1  => false
  * '5'  => false
  */
-function isInteger(/* number */) {
-  throw new Error('Not implemented');
+function isInteger(number) {
+  let res = false;
+  if (typeof number === 'number' && number % 1 === 0) {
+    res = true;
+  }
+  return res;
 }
 
 /**
@@ -477,8 +490,12 @@ function getIntegerOnString(/* str, base */) {
  * 3.5      => false
  * 2 ** 53  => false
  */
-function isSafeInteger(/* number */) {
-  throw new Error('Not implemented');
+function isSafeInteger(number) {
+  let res = false;
+  if (number % 1 === 0 && number < 214783648 && number > -214783648) {
+    res = true;
+  }
+  return res;
 }
 
 /**
@@ -491,8 +508,8 @@ function isSafeInteger(/* number */) {
  * 5.9  => 5
  * -5.1 => -6
  */
-function roundToSmallestInteger(/* number */) {
-  throw new Error('Not implemented');
+function roundToSmallestInteger(number) {
+  return Math.floor(number);
 }
 
 /**
