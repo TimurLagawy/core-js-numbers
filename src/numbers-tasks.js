@@ -279,13 +279,10 @@ function getCube(num) {
 function getFibonacciNumber(index) {
   const mass = [0, 1, 1, 2];
 
-  for (let i = 4; i < 100; i += 1) {
-    for (let l = 2; l < i - 1; l += 1) {
-      if (i % l !== 0) {
-        mass.push(i);
-      }
-    }
+  for (let i = 3; i < 20; i += 1) {
+    mass.push(mass[i] + mass[i - 1]);
   }
+
   return mass[index];
 }
 
@@ -340,7 +337,15 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  return num % 2 === 0;
+  let res = false;
+  let multi = 2;
+  for (let i = 0; multi <= num; i += 1) {
+    multi *= 2;
+    if (multi === num) {
+      res = true;
+    }
+  }
+  return res;
 }
 
 /**
@@ -353,8 +358,8 @@ function isPowerOfTwo(num) {
  *   0 => 0
  *   Math.PI / 2 => 1
  */
-function getSine(/* num */) {
-  throw new Error('Not implemented');
+function getSine(num) {
+  return Math.sin(num);
 }
 
 /**
@@ -368,8 +373,8 @@ function getSine(/* num */) {
  * 255, 16 => 'ff'
  * 2, 2    => '10'
  */
-function numberToStringInBase(/* number, base */) {
-  throw new Error('Not implemented');
+function numberToStringInBase(number, base) {
+  return number.toString(base);
 }
 
 /**
@@ -382,8 +387,8 @@ function numberToStringInBase(/* number, base */) {
  * @example:
  * 12345, 2    => '1.23e+4'
  */
-function toExponential(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function toExponential(number, fractionDigits) {
+  return number.toExponential(fractionDigits);
 }
 
 /**
