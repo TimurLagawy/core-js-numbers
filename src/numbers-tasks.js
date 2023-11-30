@@ -403,9 +403,8 @@ function toExponential(number, fractionDigits) {
  * 12.345, 1   => '12.3'
  */
 function toFixed(number, fractionDigits) {
-  const dig = 10 ** fractionDigits;
-  const res = Math.round(number * dig);
-  return res / dig;
+  // return Math.round(number * 10 ** fractionDigits) / 10 ** fractionDigits;
+  return number.toFixed(fractionDigits);
 }
 
 /**
@@ -420,8 +419,8 @@ function toFixed(number, fractionDigits) {
  * 12345, 7    => '12345.00'
  * 12.345, 4   => '12.35'
  */
-function toPrecision(/* number, precision */) {
-  throw new Error('Not implemented');
+function toPrecision(number, precision) {
+  return number.toPrecision(precision);
 }
 
 /**
@@ -434,8 +433,8 @@ function toPrecision(/* number, precision */) {
  * new Number(5) => 5
  * Number(-5)    => -5
  */
-function getNumberValue(/* number */) {
-  throw new Error('Not implemented');
+function getNumberValue(number) {
+  return Number(number);
 }
 
 /**
@@ -454,11 +453,20 @@ function getNumberValue(/* number */) {
  * '5'      => false
  */
 function isNumber(number) {
-  let res = false;
+  /* let res = false;
   if (typeof number === 'number' && number !== Infinity) {
     res = true;
   }
-  return res;
+  return res; */
+
+  // eslint-disable-next-line no-restricted-globals
+  return typeof number === 'number' && isFinite(number);
+  /* return (
+    !isNaN(+number) &&
+    typeof value !== 'boolean' &&
+    number !== null &&
+    number !== ''
+  ); */
 }
 
 /**
@@ -490,8 +498,33 @@ function isInteger(number) {
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
  */
-function getFloatOnString(/* str */) {
-  throw new Error('Not implemented');
+function getFloatOnString(str) {
+  /* const number = Number(str);
+  let res = NaN;
+  if (typeof number === 'number') {
+    res = number;
+  }
+  return res; */
+  let str1 = '';
+  for (let i = 0; i < str.length; i += 1) {
+    if (
+      str[i] !== 'a' &&
+      str[i] !== 'b' &&
+      str[i] !== 'c' &&
+      str[i] !== 'd' &&
+      str[i] !== 'e' &&
+      str[i] !== 'f' &&
+      str[i] !== 'g' &&
+      str[i] !== 'h'
+    ) {
+      str1 += str[i];
+    }
+  }
+  let res = NaN;
+  if (typeof Number(str1) === 'number') {
+    res = +str1;
+  }
+  return res;
 }
 
 /**
