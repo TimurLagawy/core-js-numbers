@@ -505,6 +505,7 @@ function getFloatOnString(str) {
     res = number;
   }
   return res; */
+  let res = NaN;
   let str1 = '';
   for (let i = 0; i < str.length; i += 1) {
     if (
@@ -518,10 +519,11 @@ function getFloatOnString(str) {
       str[i] !== 'h'
     ) {
       str1 += str[i];
+    } else {
+      break;
     }
   }
-  let res = NaN;
-  if (typeof Number(str1) === 'number') {
+  if (str1.length > 0) {
     res = +str1;
   }
   return res;
@@ -541,8 +543,10 @@ function getFloatOnString(str) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  const parsedNumber = parseInt(str, base);
+  // eslint-disable-next-line no-restricted-globals
+  return isNaN(parsedNumber) ? NaN : parsedNumber;
 }
 
 /**
