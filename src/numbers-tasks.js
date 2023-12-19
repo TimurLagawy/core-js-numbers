@@ -707,7 +707,12 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  return Math.sqrt(a * a + b * b);
+  const sumOfSquares = a ** 2 + b ** 2;
+
+  if (sumOfSquares > Number.MAX_SAFE_INTEGER) {
+    return `1.7976931348623157e+308`;
+  }
+  return Math.sqrt(sumOfSquares);
 }
 
 /**
