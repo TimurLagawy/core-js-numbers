@@ -505,7 +505,7 @@ function getFloatOnString(str) {
     res = number;
   }
   return res; */
-  let res = NaN;
+  /* let res = NaN;
   let str1 = '';
   for (let i = 0; i < str.length; i += 1) {
     if (
@@ -526,7 +526,8 @@ function getFloatOnString(str) {
   if (str1.length > 0) {
     res = +str1;
   }
-  return res;
+  return res; */
+  return parseFloat(str);
 }
 
 /**
@@ -561,11 +562,12 @@ function getIntegerOnString(str, base) {
  * 2 ** 53  => false
  */
 function isSafeInteger(number) {
-  let res = false;
+  /* let res = false;
   if (number % 1 === 0 && number < 214783648 && number > -214783648) {
     res = true;
   }
-  return res;
+  return res; */
+  return Number.isSafeInteger(number);
 }
 
 /**
@@ -631,14 +633,15 @@ function roundToNearestInteger(number) {
  * -5.5 => -5
  */
 function getIntegerPartNumber(number) {
-  let res;
+  /* let res;
   if (number < 0) {
     res = Math.floor(-number);
     res = -res;
   } else {
     res = Math.floor(number);
   }
-  return res;
+  return res; */
+  return Math.trunc(number);
 }
 
 /**
