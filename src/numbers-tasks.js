@@ -729,13 +729,18 @@ function getHypotenuse(a, b) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
-  let n = 0;
+  /* let n = 0;
   for (let i = 0; i <= number; i += 1) {
     if (i % 2 !== 0) {
       n += 1;
     }
   }
-  return n;
+  return n; */
+  if (number < 0) {
+    // eslint-disable-next-line no-param-reassign
+    number = -number;
+  }
+  return Math.floor((number + 1) / 2);
 }
 
 module.exports = {
