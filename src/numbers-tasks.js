@@ -593,14 +593,15 @@ function roundToSmallestInteger(number) {
  * -5.9 => -5
  */
 function roundToLargestInteger(number) {
-  let res;
+  /* let res;
   if (number > 0) {
     res = Math.floor(-number);
     res = -res;
   } else {
     res = Math.floor(number);
   }
-  return res;
+  return res; */
+  return Math.ceil(number);
 }
 
 /**
