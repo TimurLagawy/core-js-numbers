@@ -534,6 +534,8 @@ function getFloatOnString(str) {
  * Returns an integer of the specified base or, if the number cannot be parsed
  * from the argument, returns NaN.
  *
+ *
+ *
  * @param {string} str
  * @param {number} base
  * @return {number | NaN}
